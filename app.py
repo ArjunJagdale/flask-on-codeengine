@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template_string
+from flask import Flask, request
 import requests
 
 app = Flask(__name__)
@@ -24,13 +24,24 @@ def github_activity():
         return "Please provide a username."
 
     url = f"https://api.github.com/users/{username}/events/public"
-    resp = requests.get(url)
-    if resp.status_code != 200:
-        return f"GitHub API error: {resp.status_code}", 400
+    headers = {'Accept': 'application/vnd.github+json'}
+    response = requests.get(url, headers=headers)
 
-    data = resp.json()[:5]
-    events = [f"{event['type']} in <b>{event['repo']['name']}</b>" for event in data]
-    return "<h3>Recent Activity for " + username + "</h3><ul>" + "".join(f"<li>{e}</li>" for e in events) + "</ul>"
+    if response.status_code != 200:
+        return f"<h3>❌ Error: Could not fetch activity for {username}</h3>"
+
+    events = response.json()[:5]
+    activity_list = [
+        f"{event.get('type', 'Unknown')} in <b>{event.get('repo', {}).get('name', 'Unknown')}</b>"
+        for event in events
+    ]
+
+    html_output = f"<h2>Recent activity for <em>{username}</em>:</h2><ul>"
+    for item in activity_list:
+        html_output += f"<li>{item}</li>"
+    html_output += "</ul>"
+
+    return html_output
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
