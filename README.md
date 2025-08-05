@@ -23,8 +23,7 @@ A simple, cloud-deployed web app built with Flask that fetches and displays the 
 
 ## 🖼️ Preview
 
-![screenshot](https://github.com/ArjunJagdale/flask-on-codeengine/assets/preview-placeholder.png)
-<sup><em>Replace with a screenshot if you'd like.</em></sup>
+![demo](https://github.com/user-attachments/assets/f793fee3-6346-439a-98ba-72fd7370f930)
 
 ---
 
