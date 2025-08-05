@@ -9,7 +9,7 @@ HTML_FORM = """
 <head>
   <title>GitHub Activity Viewer</title>
   <style>
-    body {
+    body {{
       font-family: Arial, sans-serif;
       background: #f2f2f2;
       display: flex;
@@ -18,8 +18,8 @@ HTML_FORM = """
       justify-content: center;
       min-height: 100vh;
       margin: 0;
-    }
-    .container {
+    }}
+    .container {{
       background: white;
       padding: 30px;
       border-radius: 12px;
@@ -27,14 +27,14 @@ HTML_FORM = """
       text-align: center;
       max-width: 500px;
       width: 90%;
-    }
-    input[type="text"] {
+    }}
+    input[type="text"] {{
       padding: 10px;
       font-size: 16px;
       width: 70%;
       margin-bottom: 15px;
-    }
-    input[type="submit"] {
+    }}
+    input[type="submit"] {{
       padding: 10px 20px;
       font-size: 16px;
       background: #007bff;
@@ -42,11 +42,11 @@ HTML_FORM = """
       border: none;
       border-radius: 6px;
       cursor: pointer;
-    }
-    ul {
+    }}
+    ul {{
       text-align: left;
       margin-top: 20px;
-    }
+    }}
   </style>
 </head>
 <body>
