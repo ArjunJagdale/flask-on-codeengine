@@ -52,6 +52,73 @@ A simple, cloud-deployed web app built with Flask that fetches and displays the 
 
 ---
 
+## ☁️ Why IBM Cloud?
+
+This project was built to demonstrate real-world deployment skills using **IBM Cloud Code Engine**, a powerful, fully-managed, serverless platform. IBM Cloud was chosen because:
+
+* ✅ It abstracts away Kubernetes and infrastructure management
+* 🔄 It automatically builds container images from source code (no Dockerfile required)
+* 📈 It auto-scales applications based on demand — from 0 to N instances
+* 🧩 It integrates seamlessly with GitHub for continuous delivery
+
+---
+
+## 🧠 IBM Cloud Code Engine – Under the Hood
+
+**Code Engine** allows you to deploy apps without managing the infrastructure:
+
+| Feature               | How it’s used in this project             |
+| --------------------- | ----------------------------------------- |
+| Build from Git repo   | Pulls `app.py` & dependencies from GitHub |
+| Serverless runtime    | Flask app runs only when accessed         |
+| Auto-scaling          | Automatically scales between 0 and 3 pods |
+| Logging & monitoring  | Built-in CLI and dashboard visibility     |
+| Public HTTPS endpoint | Your app is served securely by default    |
+
+---
+
+## 🚀 IBM Cloud Setup (Step-by-step for beginners)
+
+> 🔗 [Official Docs](https://cloud.ibm.com/docs/codeengine?topic=codeengine-getting-started)
+
+1. **Login**
+
+   ```bash
+   ibmcloud login --sso
+   ```
+
+2. **Install Code Engine plugin**
+
+   ```bash
+   ibmcloud plugin install code-engine
+   ```
+
+3. **Create/select project**
+
+   ```bash
+   ibmcloud ce project create --name flask-project
+   ibmcloud ce project select --name flask-project
+   ```
+
+4. **Deploy application**
+
+   ```bash
+   ibmcloud ce application create \
+     --name flask-app \
+     --build-source https://github.com/ArjunJagdale/flask-on-codeengine.git \
+     --port 8080 \
+     --cpu 0.5 --memory 1G \
+     --max-scale 3
+   ```
+
+5. **Update after changes**
+
+   ```bash
+   ibmcloud ce application update \
+     --name flask-app \
+     --build-source https://github.com/ArjunJagdale/flask-on-codeengine.git
+   ```
+
 ## 🚀 IBM Cloud Deployment Instructions
 
 ### ✅ Prerequisites
